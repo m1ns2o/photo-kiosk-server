@@ -15,22 +15,23 @@ app.add_middleware(
 )
 
 @app.get("/file/{file_name}", response_class=FileResponse)
-async def img_list(file_name: str):
+def img_list(file_name: str):
     file_response = FileResponse(file_name)
     file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
     return file_response
 
+@app.get("/imgprocess/grayscale")
+def img_convert_grayscale():
+    for i in range(0,8):
+        image = Image.open(str(i) + '.JPG')
+        gray_image = image.convert("L")
+        gray_image_path = str(i)+"_g.jpg"
+        gray_image.save(gray_image_path)
+    return {"message": "success"}
+
 @app.get("/file/{file_name}/grayscale", response_class=FileResponse)
-async def img_list(file_name: str):
-    image = Image.open(file_name)
-
-    # 그레이스케일로 변환
-    gray_image = image.convert("L")
-
-    # 결과 저장
-    gray_image_path = file_name[0]+"_g.jpg"
-    gray_image.save(gray_image_path)
-    file_response = FileResponse(gray_image_path)
+def img_list_grayscale(file_name: str):
+    file_response = FileResponse(file_name[0]+"_g.jpg")
     file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
     return file_response
 
