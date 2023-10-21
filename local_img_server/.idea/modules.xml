@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/net6.0-windows.iml" filepath="$PROJECT_DIR$/.idea/net6.0-windows.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/local_img_server.iml" filepath="$PROJECT_DIR$/.idea/local_img_server.iml" />
     </modules>
   </component>
 </project>
