@@ -12,6 +12,8 @@ app = FastAPI()
 key = Fernet.generate_key()
 cipher_suite = Fernet(key)
 
+physical_uuid: int = 0
+
 # CORS Middleware 추가
 app.add_middleware(
     CORSMiddleware,
@@ -20,6 +22,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+async def run_on_startup():
+    global physical_uuid
+    physical_uuid = uuid.getnode()
+    print(physical_uuid)
 
 
 @app.get("/file/{file_name}", response_class=FileResponse)
@@ -45,12 +54,19 @@ def img_list_grayscale(file_name: str):
     file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
     return file_response
 
+
+@app.get("/test/addr")
+def testfunc():
+    return {"text": "test"}
+
+
 @app.get("/qr")
 def qr_uuid_random():
+    global physical_uuid
     seed = datetime.datetime.now() - datetime.timedelta(days=5)
     uuid_v1 = uuid.uuid1()
     random.seed(seed.timestamp())
     rand_int = random.randint(0, 1024)
-    text = str(uuid_v1) + str(rand_int)
+    text = str(uuid_v1) + str(rand_int) + str(physical_uuid)
     encrypted_text = cipher_suite.encrypt(text.encode())
     return {"qr": encrypted_text.decode()}
