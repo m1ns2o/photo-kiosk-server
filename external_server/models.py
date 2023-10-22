@@ -12,7 +12,7 @@ SessionLocal = sessionmaker(bind=engine)
 class Img(Base):
     __tablename__ = "img"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    img = Column(BLOB)
+    img = Column(String(200))
     addr = Column(String(200))
     date = Column(DateTime, default=datetime.datetime.utcnow)
 
