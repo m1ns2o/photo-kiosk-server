@@ -5,6 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7b2aa9-ab66-46dc-ae24-3368d5c8a1a1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../external_server/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../external_server/database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../external_server/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../external_server/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../external_server/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../external_server/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../external_server/img.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../external_server/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../external_server/string" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,21 +27,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2X6BWzYkZeJEHnUsL8NfY3WHEer" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk-server/external_server&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\srjms\Documents\photo-kiosk-monorepo\photo-kiosk-server\local_img_server" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

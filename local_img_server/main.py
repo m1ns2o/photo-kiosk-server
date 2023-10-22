@@ -2,10 +2,9 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
-import random
+import json
 import uuid
 from cryptography.fernet import Fernet
-import datetime
 
 app = FastAPI()
 
@@ -27,9 +26,9 @@ app.add_middleware(
 @app.on_event("startup")
 async def run_on_startup():
     global physical_uuid
-    physical_uuid = uuid.getnode()
-    print(physical_uuid)
-
+    with open('settings.json', 'r') as file:
+        data = json.load(file)
+    physical_uuid = data["uuid"]
 
 @app.get("/file/{file_name}", response_class=FileResponse)
 def img_list(file_name: str):
@@ -63,10 +62,9 @@ def testfunc():
 @app.get("/qr")
 def qr_uuid_random():
     global physical_uuid
-    seed = datetime.datetime.now() - datetime.timedelta(days=5)
-    uuid_v1 = uuid.uuid1()
-    random.seed(seed.timestamp())
-    rand_int = random.randint(0, 1024)
-    text = str(uuid_v1) + str(rand_int) + str(physical_uuid)
-    encrypted_text = cipher_suite.encrypt(text.encode())
-    return {"qr": encrypted_text.decode()}
+    uuid_v1 = str(uuid.uuid1())
+    # encrypted_text = cipher_suite.encrypt(physical_uuid.encode())
+    text = uuid_v1[:20] + physical_uuid + uuid_v1[20:]
+    # print(len(encrypted_text))
+    return {"qr": text, "length": len(text)}
+    # return {"qr": encrypted_text.decode(), "length": len(text)}

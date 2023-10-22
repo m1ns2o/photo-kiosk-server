@@ -7,6 +7,7 @@
           <option value="PIL" />
           <option value="Image" />
           <option value="starlette.responses.FileResponse.__await__" />
+          <option value="uuid.UUID.__add__" />
         </list>
       </option>
     </inspection_tool>
