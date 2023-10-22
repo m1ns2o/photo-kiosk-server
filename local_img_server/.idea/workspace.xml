@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7b2aa9-ab66-46dc-ae24-3368d5c8a1a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../external_server/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../external_server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../external_server/img.db" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/img.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../external_server/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../external_server/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../external_server/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

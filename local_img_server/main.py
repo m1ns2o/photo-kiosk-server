@@ -5,6 +5,8 @@ from PIL import Image
 import json
 import uuid
 from cryptography.fernet import Fernet
+from pydantic import BaseModel
+import base64
 
 app = FastAPI()
 
@@ -22,6 +24,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class ImageData(BaseModel):
+    # image_addr: str #이미지 qr코드 주소
+    image_data: str #파일 이미지
 
 @app.on_event("startup")
 async def run_on_startup():
@@ -67,4 +72,17 @@ def qr_uuid_random():
     text = uuid_v1[:20] + physical_uuid + uuid_v1[20:]
     # print(len(encrypted_text))
     return {"qr": text, "length": len(text)}
-    # return {"qr": encrypted_text.decode(), "length": len(text)}
+
+@app.post("/save")
+async def save_image_async(data: ImageData):
+    image_data = data.image_data.split(",")[1]
+    decoded_image_data = base64.b64decode(image_data)
+
+    # 고유한 .jpg 파일 이름 생성
+    # 이미지를 로컬 디렉토리에 .jpg 형식으로 저장
+    with open("print_img.jpg", 'wb') as image_file:
+        image_file.write(decoded_image_data)
+
+    # 이미지 파일 경로를 DB에 저장
+
+    return {"id": "img_Save"}
