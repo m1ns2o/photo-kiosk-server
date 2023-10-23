@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException, Depends, UploadFile
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 import base64
@@ -28,6 +29,24 @@ class ImageData(BaseModel):
 
 # 이미지를 로컬 디렉토리에 저장하기 위한 경로 설정
 IMAGE_DIR = ""
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/{addr}")
+async def read_img(request: Request, addr: str):
+    # 이미지를 DB에서 조회
+    db_session = SessionLocal()
+    image_record = db_session.query(Img).filter(Img.addr == addr).first()
+    db_session.close()
+
+    if not image_record:
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    # 이미지의 경로를 템플릿에 전달
+    return templates.TemplateResponse("index.html",
+                                      {"request": request, "image_path": os.path.basename(image_record.addr)})
+
+    # return templates.TemplateResponse("index.html", {"request": request, "image_path": image_record.img})
 
 @app.on_event("startup")
 async def run_on_startup():

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 표시</title>
+    <style>
+      /* @import url("https://fonts.googleapis.com/css?family=Alatsi|Poppins&display=swap"); */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      .main {
+        width: 100%;
+        height: 100%;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .img {
+        width: 90%;
+        height: auto;
+        margin: auto;
+      }
+      img {
+        display: block;
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .header {
+        text-align: center;
+      }
+      nav {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      button {
+        width: 45%;
+        height: 40px;
+        text-decoration: none;
+        border-radius: 4px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <!-- 서비스 이미지 or 텍스트 -->
+        <h2>Hello World</h2>
+      </div>
+      <div class="img">
+         <img src="/img/{{ image_path }}" alt="이미지 로딩 중..." />
+<!--        <img src="https://ifh.cc/g/XLWVqR.jpg" alt="" />-->
+      </div>
+      <nav>
+        <button>사진 저장<i class="fas fa-download"></i></button>
+        <button>영상 저장<i class="fas fa-download"></i></button>
+      </nav>
+    </div>
+
+    <script></script>
+  </body>
+</html>
