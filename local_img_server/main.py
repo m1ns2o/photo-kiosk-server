@@ -15,6 +15,8 @@ cipher_suite = Fernet(key)
 
 physical_uuid: int = 0
 
+dir = '../../winform-camera/CameraControl_test/CameraControl/bin/Debug/net6.0-windows/'
+
 # CORS Middleware 추가
 app.add_middleware(
     CORSMiddleware,
@@ -37,7 +39,7 @@ async def run_on_startup():
 
 @app.get("/file/{file_name}", response_class=FileResponse)
 def img_list(file_name: str):
-    file_response = FileResponse(file_name)
+    file_response = FileResponse(dir + file_name)
     file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
     return file_response
 
@@ -45,16 +47,16 @@ def img_list(file_name: str):
 @app.get("/imgprocess/grayscale")
 def img_convert_grayscale():
     for i in range(0, 8):
-        image = Image.open(str(i) + '.JPG')
+        image = Image.open(dir + str(i) + '.JPG')
         gray_image = image.convert("L")
-        gray_image_path = str(i) + "_g.jpg"
+        gray_image_path = dir + str(i) + "_g.jpg"
         gray_image.save(gray_image_path)
     return {"message": "success"}
 
 
 @app.get("/file/{file_name}/grayscale", response_class=FileResponse)
 def img_list_grayscale(file_name: str):
-    file_response = FileResponse(file_name[0] + "_g.jpg")
+    file_response = FileResponse(dir + file_name[0] + "_g.jpg")
     file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
     return file_response
 
@@ -74,7 +76,7 @@ def qr_uuid_random():
     return {"qr": text, "length": len(text)}
 
 @app.post("/save")
-async def save_image_async(data: ImageData):
+def save_image_async(data: ImageData):
     image_data = data.image_data.split(",")[1]
     decoded_image_data = base64.b64decode(image_data)
 
