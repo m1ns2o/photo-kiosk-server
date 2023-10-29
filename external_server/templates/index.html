@@ -65,6 +65,9 @@
       h2 {
         font-size: 30px;
       }
+      a{
+        none;
+      }
     </style>
   </head>
   <body>
@@ -74,12 +77,14 @@
         <h2>Hello World</h2>
       </div>
       <div class="img">
-         <img src="/img/{{ image_path }}" alt="이미지 로딩 중..." />
+         <img src="/download/{{ image_path }}.jpg" alt="이미지 로딩 중..." />
 <!--        <img src="https://ifh.cc/g/XLWVqR.jpg" alt="" />-->
       </div>
       <nav>
-        <button>사진 저장<i class="fas fa-download"></i></button>
-        <button>영상 저장<i class="fas fa-download"></i></button>
+
+        <button onclick="location.href = '/download/{{ image_path }}.jpg'">사진 저장<i class="fas fa-download"></i></button>
+
+        <button onclick="location.href = '/download/{{ image_path }}.mp4'">영상 저장<i class="fas fa-download"></i></button></a>
       </nav>
     </div>
 

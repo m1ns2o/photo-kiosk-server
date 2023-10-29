@@ -44,7 +44,7 @@ async def read_img(request: Request, addr: str):
 
     # 이미지의 경로를 템플릿에 전달
     return templates.TemplateResponse("index.html",
-                                      {"request": request, "image_path": os.path.basename(image_record.addr)})
+                                      {"request": request, "image_path": image_record.img})
 
     # return templates.TemplateResponse("index.html", {"request": request, "image_path": image_record.img})
 
@@ -84,17 +84,24 @@ async def save_image_async(data: ImageData):
     return {"file_name": file_uuid}
 
 
-@app.get("/img/{addr}")
-def get_image_by_addr(addr: str):
-    db_session = SessionLocal()
-    #uuid를 db에 저장했기 때문에
-    image_record = db_session.query(Img).filter(Img.addr == addr).first()
-    db_session.close()
+# @app.get("/img/{addr}")
+# def get_image_by_addr(addr: str):
+#     db_session = SessionLocal()
+#     #uuid를 db에 저장했기 때문에
+#     image_record = db_session.query(Img).filter(Img.addr == addr).first()
+#     db_session.close()
+#
+#     if not image_record:
+#         raise HTTPException(status_code=404, detail="Image not found")
+#     # 이미지 파일을 FileResponse로 반환
+#     return FileResponse(IMAGE_DIR+"/"+image_record.img+".JPG")
 
-    if not image_record:
-        raise HTTPException(status_code=404, detail="Image not found")
-    # 이미지 파일을 FileResponse로 반환
-    return FileResponse(IMAGE_DIR+"/"+image_record.img+".JPG", media_type="image/jpeg")
+
+@app.get("/download/{file_name}")
+async def download_file(file_name: str):
+    file_path = IMAGE_DIR+"/" + file_name  # 실제 파일 경로 지정
+    return FileResponse(file_path, headers={"Content-Disposition": f"attachment; filename={file_name}"})
+
 
 @app.post("/receive")
 def receive_file(file: UploadFile):
