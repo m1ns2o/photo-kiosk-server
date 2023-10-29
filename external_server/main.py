@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, UploadFile
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
@@ -64,7 +64,8 @@ async def save_image_async(data: ImageData):
     decoded_image_data = base64.b64decode(image_data)
 
     # 고유한 .jpg 파일 이름 생성
-    unique_filename = f"{uuid.uuid4()}.jpg"
+    file_uuid = str(uuid.uuid4())
+    unique_filename = f"{file_uuid}.jpg"
     file_path = os.path.join(IMAGE_DIR, unique_filename).replace("\\", "/")
     print(unique_filename)
     print(file_path)
@@ -74,23 +75,36 @@ async def save_image_async(data: ImageData):
 
     # 이미지 파일 경로를 DB에 저장
     db_session = SessionLocal()
-    new_image = Img(img=file_path, addr=data.image_addr, date=datetime.datetime.utcnow())
+    new_image = Img(img=file_uuid, addr=data.image_addr, date=datetime.datetime.utcnow())
     db_session.add(new_image)
     db_session.commit()
     db_session.refresh(new_image)
     db_session.close()
 
-    return {"id": new_image.id}
+    return {"file_name": file_uuid}
 
 
 @app.get("/img/{addr}")
 def get_image_by_addr(addr: str):
     db_session = SessionLocal()
+    #uuid를 db에 저장했기 때문에
     image_record = db_session.query(Img).filter(Img.addr == addr).first()
     db_session.close()
 
     if not image_record:
         raise HTTPException(status_code=404, detail="Image not found")
-
     # 이미지 파일을 FileResponse로 반환
-    return FileResponse(image_record.img, media_type="image/jpeg")
+    return FileResponse(IMAGE_DIR+"/"+image_record.img+".JPG", media_type="image/jpeg")
+
+@app.post("/receive")
+def receive_file(file: UploadFile):
+    print('call')
+    try:
+        file_path = os.path.join(IMAGE_DIR, file.filename).replace("\\", "/")
+        with open(file_path + ".mp4", "wb+") as buffer:
+            buffer.write(file.file.read())
+        return {"detail": "File received successfully."}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"File receive failed: {str(e)}")
+
+

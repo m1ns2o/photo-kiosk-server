@@ -1,3 +1,5 @@
 {
-  "uuid" : "PJ01"
+  "uuid" : "PJ01",
+  "dir" : "../../winform-camera/CameraControl_test/CameraControl/bin/Debug/net6.0-windows/",
+  "external_server" : "http://127.0.0.1:8080"
 }

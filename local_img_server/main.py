@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
@@ -7,6 +7,12 @@ import uuid
 from cryptography.fernet import Fernet
 from pydantic import BaseModel
 import base64
+import aiohttp
+from aiohttp import FormData
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 
 app = FastAPI()
 
@@ -14,8 +20,8 @@ key = Fernet.generate_key()
 cipher_suite = Fernet(key)
 
 physical_uuid: int = 0
-
-dir = '../../winform-camera/CameraControl_test/CameraControl/bin/Debug/net6.0-windows/'
+external_server:int = ""
+dir:str = ''
 
 # CORS Middleware 추가
 app.add_middleware(
@@ -30,12 +36,23 @@ class ImageData(BaseModel):
     # image_addr: str #이미지 qr코드 주소
     image_data: str #파일 이미지
 
+
+# async def send_file_using_httpx(file_name: str, file_buffer):
+#     async with httpx.AsyncClient() as client:
+#         response = await client.post("https://yourserver.com/receive", files={"file": (f"{file_name}.mp4", file_buffer)})
+#     return response
+
+
+
 @app.on_event("startup")
 async def run_on_startup():
-    global physical_uuid
+    global physical_uuid, dir, external_server
     with open('settings.json', 'r') as file:
         data = json.load(file)
     physical_uuid = data["uuid"]
+    dir = data["dir"]
+    external_server = data["external_server"]
+
 
 @app.get("/file/{file_name}", response_class=FileResponse)
 def img_list(file_name: str):
@@ -61,9 +78,9 @@ def img_list_grayscale(file_name: str):
     return file_response
 
 
-@app.get("/test/addr")
-def testfunc():
-    return {"text": "test"}
+# @app.get("/test/addr")
+# def testfunc():
+#     return {"text": "test"}
 
 
 @app.get("/qr")
@@ -88,3 +105,86 @@ def save_image_async(data: ImageData):
     # 이미지 파일 경로를 DB에 저장
 
     return {"id": "img_Save"}
+
+# @app.get("/mp4/{file_name}")
+# async def send_mp4(file_name: str, file: UploadFile = UploadFile(...)):
+#     print("call")
+#     re = requests.get(external_server+"/img/safsa")
+#     print(re)
+#     try:
+#         # 파일 저장
+#         file_location = dir + "test.mp4"
+#         with open(file_location, "wb+") as buffer:
+#             buffer.write(file.file.read())
+#
+#         # 파일을 원격 서버로 전송
+#         with open(file_location, "rb") as file_buffer:
+#             # response = requests.post(external_server+"/receive", files={"file": (f"{file_name}.mp4", file_buffer)})
+#             response = await send_file_using_httpx(file_name, file_buffer)
+#             print(response.status_code)
+#             print(response.text)
+#
+#         if response.status_code == 200:
+#             return {"id": id}
+#         else:
+#             return {"error": "Failed to send the file to the remote server."}
+#     except Exception as e:
+#         raise HTTPException(status_code=400, detail="File upload or send failed")
+
+
+# async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
+#     async with aiohttp.ClientSession() as session:
+#         data = {'file': (file_name, file_buffer, 'video/mp4')}
+#         async with session.post(external_server + "/receive/", data=data) as response:
+#             return response.status, await response.text()
+
+
+
+
+async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
+    async with aiohttp.ClientSession() as session:
+        data = FormData()
+        data.add_field('file', file_buffer, filename=file_name, content_type='video/mp4')
+        async with session.post(external_server+ "/receive", data=data) as response:
+            print(external_server+"/receive")
+            return response.status, await response.text()
+
+
+@app.get("/mp4/{file_name}")
+async def send_mp4(file_name: str):
+    try:
+        # 로컬에서 파일 불러오기
+        file_location = dir + "test.mp4"
+        # 파일을 원격 서버로 전송
+        with open(file_location, "rb") as file_buffer:
+            status_code, response_text = await send_file_using_aiohttp(file_name, file_buffer)
+            print(status_code)
+            print(response_text)
+
+        if status_code == 200:
+            return {"file_name": file_name}
+        else:
+            return {"error": "Failed to send the file to the remote server."}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"File upload or send failed: {str(e)}")
+
+# @app.get("/mp4/{file_name}")
+# async def send_mp4(file_name: str):
+#     try:
+#         # 파일 저장
+#         file_location = dir + "test.mp4"
+#         with open(file_location, "wb+") as buffer:
+#             buffer.write(file.file.read())
+#
+#         # 파일을 원격 서버로 전송
+#         with open(file_location, "rb") as file_buffer:
+#             status_code, response_text = await send_file_using_aiohttp(file_name, file_buffer)
+#             print(status_code)
+#             print(response_text)
+#
+#         if status_code == 200:
+#             return {"file_name": file_name}
+#         else:
+#             return {"error": "Failed to send the file to the remote server."}
+#     except Exception as e:
+#         raise HTTPException(status_code=400, detail="File upload or send failed")
