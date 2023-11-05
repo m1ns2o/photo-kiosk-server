@@ -10,7 +10,7 @@ import base64
 import aiohttp
 from aiohttp import FormData
 import logging
-
+from fastapi.staticfiles import StaticFiles
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -31,6 +31,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 class ImageData(BaseModel):
     # image_addr: str #이미지 qr코드 주소
