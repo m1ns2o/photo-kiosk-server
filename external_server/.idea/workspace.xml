@@ -5,14 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2a63dd3-8ac0-4da0-9317-ac58a9e5ae9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../local_img_server/3x2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python_test/.idea/python_test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img.db" beforeDir="false" afterPath="$PROJECT_DIR$/img.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../local_img_server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/0.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/0.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/0_g.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/0_g.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/1.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/1.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/1_g.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/1_g.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/2.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/2.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../local_img_server/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../local_img_server/print_img.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/print_img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/print_img.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3-2.0.7.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3-2.0.7.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3-2.0.7.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3-2.0.7.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3-2.0.7.dist-info/licenses/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/_base_connection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/_collections.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/_collections.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/_request_methods.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/connectionpool.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/connectionpool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/_securetransport/bindings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/_securetransport/bindings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/_securetransport/low_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/_securetransport/low_level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/pyopenssl.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/pyopenssl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/securetransport.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/securetransport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/socks.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/contrib/socks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/fields.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/fields.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/filepost.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/filepost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/poolmanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/poolmanager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/py.typed" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/proxy.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/proxy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/retry.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/retry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/ssl_.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/ssl_.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/ssl_match_hostname.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/ssl_match_hostname.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/ssltransport.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/ssltransport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/timeout.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/timeout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/url.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/url.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/wait.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/serverenv/Lib/site-packages/urllib3/util/wait.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ngrok.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../ngrok.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,16 +79,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk-server/external_server",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk-server/external_server&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\srjms\Documents\photo-kiosk-monorepo\photo-kiosk-server\external_server\templates" />

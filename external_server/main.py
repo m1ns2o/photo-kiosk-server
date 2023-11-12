@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import os
 import uuid
+from PIL import Image
 from models import Img, engine
 import json
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -106,6 +107,10 @@ async def save_image_async(data: ImageData):
     with open(file_path, 'wb') as image_file:
         image_file.write(decoded_image_data)
 
+    with Image.open(file_path) as img:
+        img.thumbnail((1200, 800))
+        img.save(file_path[:-4] + '_thumb.png', "PNG")
+
     # 이미지 파일 경로를 DB에 저장
     db_session = SessionLocal()
     new_image = Img(img=file_uuid, addr=data.image_addr, date=datetime.now(timezone('Asia/Seoul')))
@@ -134,6 +139,27 @@ async def save_image_async(data: ImageData):
 async def download_file(file_name: str):
     file_path = IMAGE_DIR + file_name  # 실제 파일 경로 지정
     return FileResponse(file_path, headers={"Content-Disposition": f"attachment; filename={file_name}"})
+
+@app.get("/thumbnail/{file_name}")
+async def thunbnail_img(file_name: str):
+    file_path = IMAGE_DIR + file_name  # 실제 파일 경로 지정
+    # if os.path.exists(file_path[:-4] + 'thumb.png'):
+    #     return FileResponse(file_path[:-4] + 'thumb.png')
+    #
+    # # 파일이 존재하지 않는 경우
+    #
+    # else:
+    # # 다운스케일링하려는 원본 이미지 경로 (예시)
+    # #     original_image_path = os.path.join(IMAGE_DIR, "original", file_name)
+    #     if not os.path.exists(file_path):
+    #         raise HTTPException(status_code=404, detail="Original image not found")
+    #
+    #     # 이미지 다운스케일링
+    #     with Image.open(file_path) as img:
+    #         img.thumbnail((1200,800))
+    #         img.save(file_path[:-4] + 'thumb.png', "PNG")
+
+    return FileResponse(file_path)
 
 
 @app.post("/receive")

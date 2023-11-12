@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://127.0.0.1:5173/pinia -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module" src="./Vite App_files/client"></script>
+
+    
+    <link rel="icon" href="http://127.0.0.1:5173/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/App.vue?vue&amp;type=style&amp;index=0&amp;lang.scss">@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@300&display=swap");
+:root {
+  --gray: #5f6061;
+  --shadow: #d0d3d9;
+  --primary: #9ac5f4;
+  --accent: #a7ecee;
+  --sub1: #b0daff;
+  /* --sub1: #99dbf5; */
+  --sub2: #ffeebb;
+  --black: #303030;
+  --white: #ffffff;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+a {
+  all: unset;
+  display: block;
+  height: 100%;
+}
+a:hover {
+  cursor: pointer;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/HomeView.vue?vue&amp;type=style&amp;index=0&amp;scoped=b4e148ca&amp;lang.css">
+div[data-v-b4e148ca] {
+	height: 100%;
+	text-align: center;
+	background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
+}
+h1[data-v-b4e148ca],
+h3[data-v-b4e148ca] {
+	color: white;
+}
+h1[data-v-b4e148ca] {
+	padding-top: 20%;
+	padding-bottom: 10%;
+	font-size: 7em;
+}
+h3[data-v-b4e148ca] {
+	font-size: 3em;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Layout-Frame3x2.vue?vue&amp;type=style&amp;index=0&amp;scoped=4be4b258&amp;lang.scss">.layout[data-v-4be4b258] {
+  width: 400px;
+  height: 600px;
+  padding: 5px;
+  display: flex;
+  align-content: center;
+  flex-flow: column wrap;
+}
+.layout .img_box[data-v-4be4b258] {
+  margin: 5px 3px 0px 3px;
+  width: 180px;
+  height: 180px;
+  background-color: aliceblue;
+}
+.layout .head[data-v-4be4b258] {
+  padding: 4px;
+  height: 30px;
+  color: white;
+  line-height: 30px;
+}
+.layout .footer[data-v-4be4b258] {
+  height: 30px;
+  padding-top: 2px;
+  padding-right: 3px;
+}
+.layout .qr[data-v-4be4b258] {
+  width: 25px;
+  height: 25px;
+  float: right;
+}
+.layout .qr img[data-v-4be4b258] {
+  max-width: 100%;
+  max-height: 100%;
+}
+img[data-v-4be4b258] {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: cover;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Layout-Frame4x1.vue?vue&amp;type=style&amp;index=0&amp;scoped=daea909e&amp;lang.scss">.main_frame[data-v-daea909e] {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.layout[data-v-daea909e] {
+  width: 200px;
+  height: 600px;
+  padding: 10px 10.24px 5px 10.24px;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+.layout .img_box[data-v-daea909e] {
+  width: 179.52px;
+  height: 136px;
+  margin-top: 4px;
+  background-color: aliceblue;
+}
+.layout .img_box img[data-v-daea909e] {
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+.layout .img_box[data-v-daea909e]:first-child {
+  margin-top: 0px;
+}
+.layout .img_box[data-v-daea909e]:last-child {
+  margin-top: 0px;
+}
+.layout .footer[data-v-daea909e] {
+  padding: 1px;
+  height: 25px;
+  color: white;
+}
+.layout .footer h2[data-v-daea909e] {
+  font-size: 20px;
+  height: 25px;
+  display: inline;
+}
+.layout .qr[data-v-daea909e] {
+  width: 27px;
+  height: 27px;
+  float: right;
+}
+.layout .qr img[data-v-daea909e] {
+  max-width: 100%;
+  max-height: 100%;
+}
+img[data-v-daea909e] {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: cover;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Layout-Frame2x2.vue?vue&amp;type=style&amp;index=0&amp;scoped=19666453&amp;lang.scss">.layout[data-v-19666453] {
+  width: 400px;
+  height: 600px;
+  gap: 5px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+.layout .img_box[data-v-19666453] {
+  width: 185px;
+  height: 260px;
+  background-color: aliceblue;
+}
+.layout .head[data-v-19666453] {
+  padding: 4px;
+  height: 30px;
+  color: white;
+  line-height: 30px;
+}
+.layout .footer[data-v-19666453] {
+  height: 30px;
+  padding-top: 2px;
+  padding-right: 3px;
+}
+.layout .qr[data-v-19666453] {
+  width: 25px;
+  height: 25px;
+  float: right;
+}
+.layout .qr img[data-v-19666453] {
+  max-width: 100%;
+  max-height: 100%;
+}
+img[data-v-19666453] {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: cover;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/TestView.vue?vue&amp;type=style&amp;index=0&amp;scoped=bc51ffde&amp;lang.scss">.img[data-v-bc51ffde] {
+  width: 400px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Layout-Frame6.vue?vue&amp;type=style&amp;index=0&amp;scoped=44e26d4c&amp;lang.scss">.layout[data-v-44e26d4c] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #333333;
+  width: 4in;
+  height: 6in;
+}
+.layout .layout__images[data-v-44e26d4c] {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+  padding-bottom: 0;
+}
+.layout .layout__images .layout__images__box[data-v-44e26d4c] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  overflow: hidden;
+}
+.layout .layout__images .layout__images__box img[data-v-44e26d4c] {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+.layout .layout__footer[data-v-44e26d4c] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: none;
+  color: white;
+  padding: 10px;
+}
+.layout .layout__footer .qr[data-v-44e26d4c] {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+}
+.big[data-v-44e26d4c] {
+  width: 400px;
+  height: 400px;
+  background-color: red;
+  opacity: 0.1;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Card-View.vue?vue&amp;type=style&amp;index=0&amp;scoped=79c85d21&amp;lang.scss">h2[data-v-79c85d21] {
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #303030;
+  color: white;
+  border-radius: 20px;
+}
+.card[data-v-79c85d21] {
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 350px, 250px 100%, 0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* drop-shadow: 23px 50px 8px 0px rgba(0, 0, 0, 0.3); */
+}
+.card .content[data-v-79c85d21] {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
+  padding-bottom: 14px;
+}
+.card .content .layout[data-v-79c85d21] {
+  margin-top: 5px;
+  width: 180px;
+  height: auto;
+}
+.shadow[data-v-79c85d21] {
+  filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.1));
+}
+.edge[data-v-79c85d21] {
+  box-sizing: none;
+  width: 50px;
+  height: 50px;
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+.main[data-v-79c85d21] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  height: 90%;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/navigation-view.vue?vue&amp;type=style&amp;index=0&amp;scoped=01f12a41&amp;lang.scss">nav[data-v-01f12a41] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+nav button[data-v-01f12a41] {
+  background-color: var(--black);
+  color: var(--white);
+  width: 130px;
+  height: 60px;
+  border-radius: 40px;
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+nav button[data-v-01f12a41]:disabled {
+  background-color: var(--black);
+  opacity: 0.2;
+}
+nav #prev[data-v-01f12a41] {
+  padding-right: 10px;
+}
+nav #next[data-v-01f12a41] {
+  padding-left: 10px;
+}
+nav font-awesome-icon[data-v-01f12a41] {
+  font-size: 50px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/FrameView.vue?vue&amp;type=style&amp;index=0&amp;scoped=a98195d0&amp;lang.scss">/* 
+.card {
+    background-color: gray;
+    height: 400px;
+    width: 10%;
+} */
+h2[data-v-a98195d0] {
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #303030;
+  color: white;
+  border-radius: 20px;
+}
+.main[data-v-a98195d0] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  height: 90%;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/PaymentsView.vue?vue&amp;type=style&amp;index=0&amp;scoped=26f2b3db&amp;lang.scss">.main[data-v-26f2b3db] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  height: 90%;
+}
+.main .card[data-v-26f2b3db] {
+  width: 300px;
+  height: 300px;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.1);
+  font-size: 70px;
+  text-align: center;
+  line-height: 300px;
+}
+.main .card p[data-v-26f2b3db] {
+  font-size: 20px;
+  line-height: 0px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/CountView.vue?vue&amp;type=style&amp;index=0&amp;scoped=94bd0201&amp;lang.scss">.main[data-v-94bd0201] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+.count[data-v-94bd0201] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.count div[data-v-94bd0201] {
+  font-size: 100px;
+  background-color: var(--white);
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px 5px gray;
+}
+.count button[data-v-94bd0201] {
+  width: 70px;
+  height: 70px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 50px;
+  color: var(--white);
+  background-color: var(--black);
+  border-radius: 50%;
+  border: none;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/PhotoList.vue?vue&amp;type=style&amp;index=0&amp;scoped=28284a36&amp;lang.scss">.layout[data-v-28284a36] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--black);
+  width: auto;
+  height: 600px;
+}
+.layout .layout__images[data-v-28284a36] {
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 5px;
+  width: auto;
+}
+.layout .layout__images .layout__images__box[data-v-28284a36] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 190px;
+  background-color: #eeeeee;
+  overflow: hidden;
+}
+.layout .layout__images .layout__images__box .cover[data-v-28284a36] {
+  z-index: 3;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.layout .layout__images .layout__images__box img[data-v-28284a36] {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+}
+.layout .layout__images .layout__images__box img.selected[data-v-28284a36] {
+  -webkit-filter: brightness(0.5);
+  filter: brightness(0.5);
+}
+.layout .layout__images #count[data-v-28284a36] {
+  color: var(--white);
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.layout .layout__images #count h1[data-v-28284a36] {
+  font-size: 70px;
+}
+.layout .layout__images #count h2[data-v-28284a36] {
+  font-size: 15px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Layout-switch.vue?vue&amp;type=style&amp;index=0&amp;scoped=3d750f59&amp;lang.scss"></style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/PhotoView.vue?vue&amp;type=style&amp;index=0&amp;scoped=faa5cdeb&amp;lang.scss">h2[data-v-faa5cdeb] {
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #303030;
+  color: white;
+  border-radius: 20px;
+}
+.card[data-v-faa5cdeb] {
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 350px, 250px 100%, 0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* drop-shadow: 23px 50px 8px 0px rgba(0, 0, 0, 0.3); */
+}
+.content[data-v-faa5cdeb] {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
+  padding-bottom: 14px;
+}
+.shadow[data-v-faa5cdeb] {
+  filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.1));
+}
+.edge[data-v-faa5cdeb] {
+  box-sizing: none;
+  width: 50px;
+  height: 50px;
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+.main[data-v-faa5cdeb] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 90%;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Frame-Custom.vue?vue&amp;type=style&amp;index=0&amp;scoped=354da5e0&amp;lang.scss">.main[data-v-354da5e0] {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.main .radio_custom[data-v-354da5e0] {
+  padding-left: 100px;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.main .radio_custom .radio_custom_button[data-v-354da5e0] {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  box-shadow: 1px 1px 1px var(--gray);
+  border-radius: 50%;
+}
+.main .radio_custom .custom-radio[data-v-354da5e0] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px var(--gray);
+  cursor: pointer;
+}
+.main .radio_custom .radio-dot[data-v-354da5e0] {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.main .radio_custom .radio-dot-selected[data-v-354da5e0] {
+  border: 1px solid #fff;
+}
+.main .radio_custom[data-v-354da5e0]:first-child {
+  justify-content: space-around;
+}
+.gray-scale[data-v-354da5e0] {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  background: linear-gradient(to right, white 50%, black 50%);
+}
+.color-wheel[data-v-354da5e0] {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(red, orange, yellow, green, cyan, blue, magenta, red);
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/CustomView.vue?vue&amp;type=style&amp;index=0&amp;scoped=f6616c70&amp;lang.scss">@charset "UTF-8";
+/* ... (기존의 style 코드) */
+.fullscreen-dialog[data-v-f6616c70] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  z-index: 9999;
+}
+.main[data-v-f6616c70] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 90%;
+}
+.main .img[data-v-f6616c70] {
+  width: 400px;
+  height: 600px;
+}
+nav[data-v-f6616c70] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+nav button[data-v-f6616c70] {
+  background-color: var(--black);
+  color: var(--white);
+  width: 130px;
+  height: 60px;
+  border-radius: 40px;
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+nav #print[data-v-f6616c70] {
+  padding-left: 10px;
+  display: flex;
+  gap: 5px;
+}
+nav font-awesome-icon[data-v-f6616c70] {
+  font-size: 50px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/loading-page.vue?vue&amp;type=style&amp;index=0&amp;scoped=99060d36&amp;lang.css">
+.main[data-v-99060d36] {
+    padding-top: 10%;
+	height: 100%;
+	text-align: center;
+.slot[data-v-99060d36]{
+        margin-top: 5%;
+}
+	/* background-image: linear-gradient(to right, #fc5c7d, #6a82fb); */
+}
+h1[data-v-99060d36] {
+	padding-top: 20%;
+	padding-bottom: 10%;
+	font-size: 7em;
+}
+h3[data-v-99060d36] {
+	font-size: 3em;
+}
+/* 
+#link {color: #E45635;display:block;font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;text-align:center; text-decoration: none;}
+#link:hover {color: #CCCCCC}
+
+#link, #link:hover {-webkit-transition: color 0.5s ease-out;-moz-transition: color 0.5s ease-out;-ms-transition: color 0.5s ease-out;-o-transition: color 0.5s ease-out;transition: color 0.5s ease-out;} */
+
+/** BEGIN CSS **/
+@keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@-moz-keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@-webkit-keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@-o-keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@-moz-keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@-webkit-keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@-o-keyframes rotate-loading-99060d36 {
+0%  {transform: rotate(0deg);-ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg);}
+100% {transform: rotate(360deg);-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -moz-transform: rotate(360deg);}
+}
+@keyframes loading-text-opacity-99060d36 {
+0%  {opacity: 0}
+20% {opacity: 0}
+50% {opacity: 1}
+100%{opacity: 0}
+}
+@-moz-keyframes loading-text-opacity-99060d36 {
+0%  {opacity: 0}
+20% {opacity: 0}
+50% {opacity: 1}
+100%{opacity: 0}
+}
+@-webkit-keyframes loading-text-opacity-99060d36 {
+0%  {opacity: 0}
+20% {opacity: 0}
+50% {opacity: 1}
+100%{opacity: 0}
+}
+@-o-keyframes loading-text-opacity-99060d36 {
+0%  {opacity: 0}
+20% {opacity: 0}
+50% {opacity: 1}
+100%{opacity: 0}
+}
+.loading-container[data-v-99060d36],
+.loading[data-v-99060d36] {
+    height: 200px;
+    position: relative;
+    width: 200px;
+    border-radius: 100%;
+}
+.loading-container[data-v-99060d36] { margin: 40px auto
+}
+.loading[data-v-99060d36] {
+    border: 10px solid transparent;
+    /* 로딩 바 두께 */
+    border-color: transparent var(--black) transparent var(--black);
+    -moz-animation: rotate-loading-99060d36 1.5s linear 0s infinite normal;
+    -moz-transform-origin: 50% 50%;
+    -o-animation: rotate-loading-99060d36 1.5s linear 0s infinite normal;
+    -o-transform-origin: 50% 50%;
+    -webkit-animation: rotate-loading-99060d36 1.5s linear 0s infinite normal;
+    -webkit-transform-origin: 50% 50%;
+    animation: rotate-loading-99060d36 1.5s linear 0s infinite normal;
+    transform-origin: 50% 50%;
+}
+
+/* .loading-container:hover .loading {
+    border-color: transparent #E45635 transparent #E45635;
+}
+.loading-container:hover .loading, */
+.loading-container .loading[data-v-99060d36] {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+#loading-text[data-v-99060d36] {
+    -moz-animation: loading-text-opacity-99060d36 2s linear 0s infinite normal;
+    -o-animation: loading-text-opacity-99060d36 2s linear 0s infinite normal;
+    -webkit-animation: loading-text-opacity-99060d36 2s linear 0s infinite normal;
+    animation: loading-text-opacity-99060d36 2s linear 0s infinite normal;
+    color: var(--black);
+    font-family: "Helvetica Neue, "Helvetica", ""arial";
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 95px;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 0;
+    width: 200px; 
+    /* fwidth값 == 로딩 원 값
+    fontsize + marintop*2 = widthd */
+}
+
+</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/components/Video-Test.vue?vue&amp;type=style&amp;index=0&amp;scoped=374fd655&amp;lang.scss">@charset "UTF-8";
+video[data-v-374fd655] {
+  /* 비디오 스타일 설정 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.layout[data-v-374fd655] {
+  width: 400px;
+  height: 600px;
+  padding: 5px;
+  display: flex;
+  align-content: center;
+  flex-flow: column wrap;
+}
+.layout .img_box[data-v-374fd655] {
+  margin: 5px 3px 0px 3px;
+  width: 180px;
+  height: 180px;
+  background-color: aliceblue;
+}
+.layout .head[data-v-374fd655] {
+  padding: 4px;
+  height: 30px;
+  color: white;
+  line-height: 30px;
+}
+.layout .footer[data-v-374fd655] {
+  height: 30px;
+  padding-top: 2px;
+  padding-right: 3px;
+}
+.layout .qr[data-v-374fd655] {
+  width: 25px;
+  height: 25px;
+  float: right;
+}
+.layout .qr img[data-v-374fd655] {
+  max-width: 100%;
+  max-height: 100%;
+}
+img[data-v-374fd655] {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: cover;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/PiniaTest.vue?vue&amp;type=style&amp;index=0&amp;scoped=f7af999d&amp;lang.scss">@charset "UTF-8";
+/* ... (기존의 style 코드) */
+#img[data-v-f7af999d] {
+  width: 400px;
+  height: 600px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/srjms/Documents/photo-kiosk-monorepo/photo-kiosk/src/views/Test2View.vue?vue&amp;type=style&amp;index=0&amp;lang.css">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style></head>
+  <body>
+    <div id="root" data-v-app=""><v-app><v-main><div data-v-f7af999d="" id="img"><div data-v-374fd655="" data-v-f7af999d="" class="layout" style="background-color: rgb(48, 48, 48);"><div data-v-374fd655="" class="head"></div><div data-v-374fd655="" class="img_box"><video data-v-374fd655="" autoplay="" controls=""><source data-v-374fd655="" src="http://127.0.0.1:8008/capture/video.mp4" type="video/mp4"> Your browser does not support the video tag. </video></div><div data-v-374fd655="" class="img_box"><video data-v-374fd655="" autoplay="" controls=""><source data-v-374fd655="" src="http://127.0.0.1:8008/capture/video.mp4" type="video/mp4"> Your browser does not support the video tag. </video></div><div data-v-374fd655="" class="img_box"><video data-v-374fd655="" autoplay="" controls=""><source data-v-374fd655="" src="http://127.0.0.1:8008/capture/video.mp4" type="video/mp4"> Your browser does not support the video tag. </video></div><div data-v-374fd655="" class="img_box"><video data-v-374fd655="" autoplay="" controls=""><source data-v-374fd655="" src="http://127.0.0.1:8008/capture/video.mp4" type="video/mp4"> Your browser does not support the video tag. </video></div><div data-v-374fd655="" class="img_box"><video data-v-374fd655="" autoplay="" controls=""><source data-v-374fd655="" src="http://127.0.0.1:8008/capture/video.mp4" type="video/mp4"> Your browser does not support the video tag. </video></div><div data-v-374fd655="" class="img_box"><video data-v-374fd655="" autoplay="" controls=""><source data-v-374fd655="" src="http://127.0.0.1:8008/capture/video.mp4" type="video/mp4"> Your browser does not support the video tag. </video></div><div data-v-374fd655="" class="footer"><svg data-v-374fd655="" width="100" height="100" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" class="qr" style="display: none;"><path fill="#fff" d="M0,0 h23v23H0z"></path><path fill="#000" d="M1 1h7v1H1zM10 1h1v1H10zM15,1 h7v1H15zM1 2h1v1H1zM7 2h1v1H7zM11 2h2v1H11zM15 2h1v1H15zM21,2 h1v1H21zM1 3h1v1H1zM3 3h3v1H3zM7 3h1v1H7zM9 3h5v1H9zM15 3h1v1H15zM17 3h3v1H17zM21,3 h1v1H21zM1 4h1v1H1zM3 4h3v1H3zM7 4h1v1H7zM9 4h3v1H9zM13 4h1v1H13zM15 4h1v1H15zM17 4h3v1H17zM21,4 h1v1H21zM1 5h1v1H1zM3 5h3v1H3zM7 5h1v1H7zM10 5h3v1H10zM15 5h1v1H15zM17 5h3v1H17zM21,5 h1v1H21zM1 6h1v1H1zM7 6h1v1H7zM10 6h1v1H10zM12 6h2v1H12zM15 6h1v1H15zM21,6 h1v1H21zM1 7h7v1H1zM9 7h1v1H9zM11 7h1v1H11zM13 7h1v1H13zM15,7 h7v1H15zM4 9h2v1H4zM7 9h2v1H7zM13 9h1v1H13zM18 9h2v1H18zM1 10h2v1H1zM6 10h1v1H6zM8 10h2v1H8zM12 10h2v1H12zM16 10h3v1H16zM20,10 h2v1H20zM1 11h2v1H1zM6 11h4v1H6zM13 11h4v1H13zM18 11h1v1H18zM21,11 h1v1H21zM2 12h1v1H2zM4 12h2v1H4zM9 12h4v1H9zM16 12h2v1H16zM20 12h1v1H20zM1 13h1v1H1zM3 13h2v1H3zM7 13h1v1H7zM9 13h1v1H9zM15,13 h7v1H15zM9 14h2v1H9zM14 14h1v1H14zM19,14 h3v1H19zM1 15h7v1H1zM9 15h3v1H9zM14 15h2v1H14zM18 15h2v1H18zM21,15 h1v1H21zM1 16h1v1H1zM7 16h1v1H7zM10 16h3v1H10zM14 16h2v1H14zM19 16h1v1H19zM1 17h1v1H1zM3 17h3v1H3zM7 17h1v1H7zM9 17h2v1H9zM12 17h1v1H12zM15 17h1v1H15zM17 17h1v1H17zM19 17h2v1H19zM1 18h1v1H1zM3 18h3v1H3zM7 18h1v1H7zM9 18h2v1H9zM13 18h1v1H13zM16 18h2v1H16zM1 19h1v1H1zM3 19h3v1H3zM7 19h1v1H7zM10 19h1v1H10zM12 19h2v1H12zM16 19h3v1H16zM20,19 h2v1H20zM1 20h1v1H1zM7 20h1v1H7zM14 20h1v1H14zM16 20h1v1H16zM18 20h1v1H18zM20,20 h2v1H20zM1 21h7v1H1zM11 21h3v1H11zM15 21h3v1H15zM19 21h2v1H19z"></path></svg></div></div></div></v-main></v-app></div>
+    <script type="module" src="./Vite App_files/main.ts"></script>
+  
+
+</body></html>

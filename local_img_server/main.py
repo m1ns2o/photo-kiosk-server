@@ -1,7 +1,6 @@
 from fastapi import FastAPI, UploadFile, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from PIL import Image
 import json
 import uuid
 from cryptography.fernet import Fernet
@@ -11,6 +10,17 @@ import aiohttp
 from aiohttp import FormData
 import logging
 from fastapi.staticfiles import StaticFiles
+from pyppeteer import launch
+from PIL import Image
+import cv2
+import numpy as np
+import asyncio
+from selenium import webdriver
+import time
+import traceback
+
+from selenium.webdriver.chrome.options import Options
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -26,7 +36,8 @@ dir:str = ''
 # CORS Middleware 추가
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5173"],  # 모든 출처를 허용하거나 특정 도메인들의 리스트를 제공하십시오.
+    allow_origins=["*"],
+    # allow_origins=["http://127.0.0.1:5173"],  # 모든 출처를 허용하거나 특정 도메인들의 리스트를 제공하십시오.
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -78,6 +89,16 @@ def img_list_grayscale(file_name: str):
     file_response = FileResponse(dir + file_name[0] + "_g.jpg")
     file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
     return file_response
+
+
+@app.get("/capture/{file_name}", response_class=FileResponse)
+def img_list(file_name: str):
+    file_response = FileResponse(dir + file_name)
+    # file_response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
+    return file_response
+
+
+
 
 
 # @app.get("/test/addr")
@@ -170,6 +191,7 @@ async def send_mp4(file_name: str):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"File upload or send failed: {str(e)}")
 
+
 # @app.get("/mp4/{file_name}")
 # async def send_mp4(file_name: str):
 #     try:
@@ -190,3 +212,10 @@ async def send_mp4(file_name: str):
 #             return {"error": "Failed to send the file to the remote server."}
 #     except Exception as e:
 #         raise HTTPException(status_code=400, detail="File upload or send failed")
+
+
+
+#비디오 출력
+# ... 기존의 코드 ...
+
+
