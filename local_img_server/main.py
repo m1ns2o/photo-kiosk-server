@@ -18,8 +18,13 @@ import asyncio
 from selenium import webdriver
 import time
 import traceback
+import os
 
-from selenium.webdriver.chrome.options import Options
+import subprocess
+
+
+
+
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -32,6 +37,7 @@ cipher_suite = Fernet(key)
 physical_uuid: int = 0
 external_server:int = ""
 dir:str = ''
+comand =[]
 
 # CORS Middleware 추가
 app.add_middleware(
@@ -57,14 +63,45 @@ class ImageData(BaseModel):
 
 
 
+# @app.on_event("startup")
+# async def run_on_startup():
+#     global physical_uuid, dir, external_server
+#     with open('settings.json', 'r') as file:
+#         data = json.load(file)
+#     physical_uuid = data["uuid"]
+#     dir = data["dir"]
+#     external_server = data["external_server"]
+#     input_file = dir + "test.mp4"
+#     output_file = "output.mp4"
+#     target_bitrate = "5000k"  # Set your desired bitrate
+#
+#     command = [
+#         "ffmpeg",
+#         "-i", input_file,
+#         "-b:v", target_bitrate,
+#         "-c:a", "copy",  # Copy audio codec without re-encoding
+#         output_file
+#     ]
+
 @app.on_event("startup")
 async def run_on_startup():
-    global physical_uuid, dir, external_server
+    global physical_uuid, dir, external_server, command
     with open('settings.json', 'r') as file:
         data = json.load(file)
     physical_uuid = data["uuid"]
     dir = data["dir"]
     external_server = data["external_server"]
+    input_file = dir + "test.mp4"
+    output_file = "output.mp4"
+    target_bitrate = "5000k"  # Set your desired bitrate
+
+    command = [
+        "ffmpeg",
+        "-i", input_file,
+        "-b:v", target_bitrate,
+        "-c:a", "copy",  # Copy audio codec without re-encoding
+        output_file
+    ]
 
 
 @app.get("/file/{file_name}", response_class=FileResponse)
@@ -129,6 +166,14 @@ def save_image_async(data: ImageData):
 
     return {"id": "img_Save"}
 
+
+# @app.get("/print/{size}")
+# def img_list_grayscale(size: int):
+#     if size==0:
+#
+#     elif size==1:
+#
+#     return {"print_success"}
 # @app.get("/mp4/{file_name}")
 # async def send_mp4(file_name: str, file: UploadFile = UploadFile(...)):
 #     print("call")
@@ -173,16 +218,32 @@ async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
             return response.status, await response.text()
 
 
+# @app.get("/downsampling")
+# def downsampling_mp4():
+#     try:
+#         print(command)
+#         result = subprocess.run(command, capture_output=True, text=True)
+#         print(result.stdout)
+#         print("After subprocess.run")
+#         return {"mp4 file downscale complete"}
+#
+#     except Exception as e:
+#         raise HTTPException(status_code=400, detail=f"File upload or send failed: {str(e)}")
+
 @app.get("/mp4/{file_name}")
 async def send_mp4(file_name: str):
     try:
         # 로컬에서 파일 불러오기
-        file_location = dir + "test.mp4"
-        # 파일을 원격 서버로 전송
-        with open(file_location, "rb") as file_buffer:
+        print(command)
+        result = subprocess.run(command, capture_output=True, text=True)
+        print(result.stdout)
+        print("After subprocess.run")
+
+        with open("output.mp4", "rb") as file_buffer:
             status_code, response_text = await send_file_using_aiohttp(file_name, file_buffer)
             print(status_code)
             print(response_text)
+            delete_file("output.mp4")
 
         if status_code == 200:
             return {"file_name": file_name}
@@ -192,6 +253,15 @@ async def send_mp4(file_name: str):
         raise HTTPException(status_code=400, detail=f"File upload or send failed: {str(e)}")
 
 
+
+def delete_file(path:str):
+    try:
+        os.remove(path)
+        print(f"{path} deleted successfully.")
+    except FileNotFoundError:
+        print(f"File not found: {path}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 # @app.get("/mp4/{file_name}")
 # async def send_mp4(file_name: str):
 #     try:

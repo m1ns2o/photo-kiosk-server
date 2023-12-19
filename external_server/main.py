@@ -107,9 +107,9 @@ async def save_image_async(data: ImageData):
     with open(file_path, 'wb') as image_file:
         image_file.write(decoded_image_data)
 
-    with Image.open(file_path) as img:
-        img.thumbnail((1200, 800))
-        img.save(file_path[:-4] + '_thumb.png', "PNG")
+    # with Image.open(file_path) as img:
+    #     img.thumbnail((1200, 800))
+    #     img.save(file_path[:-4] + '_thumb.png', "PNG")
 
     # 이미지 파일 경로를 DB에 저장
     db_session = SessionLocal()
