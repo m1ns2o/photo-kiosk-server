@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2a63dd3-8ac0-4da0-9317-ac58a9e5ae9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../python_test/print_qt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/photo_app_server.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photo_app_server/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img.db" beforeDir="false" afterPath="$PROJECT_DIR$/img.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../local_img_server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../local_img_server/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../local_img_server/print_img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../local_img_server/print_img.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python_test/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_test/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_test/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -19,7 +19,6 @@ from selenium import webdriver
 import time
 import traceback
 import os
-
 import subprocess
 
 
@@ -35,7 +34,7 @@ key = Fernet.generate_key()
 cipher_suite = Fernet(key)
 
 physical_uuid: int = 0
-external_server:int = ""
+external_server:str = ""
 dir:str = ''
 comand =[]
 
@@ -97,6 +96,7 @@ async def run_on_startup():
 
     command = [
         "ffmpeg",
+        "-hwaccel", "cuda",
         "-i", input_file,
         "-b:v", target_bitrate,
         "-c:a", "copy",  # Copy audio codec without re-encoding
@@ -234,10 +234,11 @@ async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
 async def send_mp4(file_name: str):
     try:
         # 로컬에서 파일 불러오기
-        print(command)
+        start_time = time.time()
         result = subprocess.run(command, capture_output=True, text=True)
-        print(result.stdout)
-        print("After subprocess.run")
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"Elapsed time: {elapsed_time} seconds")
 
         with open("output.mp4", "rb") as file_buffer:
             status_code, response_text = await send_file_using_aiohttp(file_name, file_buffer)
