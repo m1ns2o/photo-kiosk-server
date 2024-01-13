@@ -37,6 +37,7 @@ physical_uuid: int = 0
 external_server:str = ""
 dir:str = ''
 comand =[]
+subprocess_completed = False
 
 # CORS Middleware 추가
 app.add_middleware(
@@ -113,11 +114,19 @@ def img_list(file_name: str):
 
 @app.get("/imgprocess/grayscale")
 def img_convert_grayscale():
+    global subprocess_completed
+
     for i in range(0, 8):
         image = Image.open(dir + str(i) + '.JPG')
         gray_image = image.convert("L")
         gray_image_path = dir + str(i) + "_g.jpg"
         gray_image.save(gray_image_path)
+    start_time = time.time()
+    result = subprocess.run(command, capture_output=True, text=True)
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time: {elapsed_time} seconds")
+    subprocess_completed = True
     return {"message": "success"}
 
 
@@ -232,21 +241,23 @@ async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
 
 @app.get("/mp4/{file_name}")
 async def send_mp4(file_name: str):
+    global subprocess_completed
     try:
         # 로컬에서 파일 불러오기
-        start_time = time.time()
-        result = subprocess.run(command, capture_output=True, text=True)
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        print(f"Elapsed time: {elapsed_time} seconds")
+        # start_time = time.time()
+        # result = subprocess.run(command, capture_output=True, text=True)
+        # end_time = time.time()
+        # elapsed_time = end_time - start_time
+        # print(f"Elapsed time: {elapsed_time} seconds")
+        while not subprocess_completed:
+            await asyncio.sleep(1)
 
         with open("output.mp4", "rb") as file_buffer:
             status_code, response_text = await send_file_using_aiohttp(file_name, file_buffer)
-            print(status_code)
-            print(response_text)
             delete_file("output.mp4")
 
         if status_code == 200:
+            subprocess_completed = False
             return {"file_name": file_name}
         else:
             return {"error": "Failed to send the file to the remote server."}
