@@ -10,14 +10,12 @@ import aiohttp
 from aiohttp import FormData
 import logging
 from fastapi.staticfiles import StaticFiles
-from pyppeteer import launch
+import oci
 from PIL import Image
 import cv2
 import numpy as np
 import asyncio
-from selenium import webdriver
 import time
-import traceback
 import os
 import subprocess
 
@@ -95,12 +93,14 @@ async def run_on_startup():
     output_file = "output.mp4"
     target_bitrate = "5000k"  # Set your desired bitrate
 
+
     command = [
         "ffmpeg",
-        "-hwaccel", "cuda",
+        # "-hwaccel", "cuda",
         "-i", input_file,
         "-b:v", target_bitrate,
         "-c:a", "copy",  # Copy audio codec without re-encoding
+        # "-vf scale", "1280x720",
         output_file
     ]
 
@@ -126,6 +126,7 @@ def img_convert_grayscale():
     end_time = time.time()
     elapsed_time = end_time - start_time
     print(f"Elapsed time: {elapsed_time} seconds")
+    print(result)
     subprocess_completed = True
     return {"message": "success"}
 
@@ -176,46 +177,6 @@ def save_image_async(data: ImageData):
     return {"id": "img_Save"}
 
 
-# @app.get("/print/{size}")
-# def img_list_grayscale(size: int):
-#     if size==0:
-#
-#     elif size==1:
-#
-#     return {"print_success"}
-# @app.get("/mp4/{file_name}")
-# async def send_mp4(file_name: str, file: UploadFile = UploadFile(...)):
-#     print("call")
-#     re = requests.get(external_server+"/img/safsa")
-#     print(re)
-#     try:
-#         # 파일 저장
-#         file_location = dir + "test.mp4"
-#         with open(file_location, "wb+") as buffer:
-#             buffer.write(file.file.read())
-#
-#         # 파일을 원격 서버로 전송
-#         with open(file_location, "rb") as file_buffer:
-#             # response = requests.post(external_server+"/receive", files={"file": (f"{file_name}.mp4", file_buffer)})
-#             response = await send_file_using_httpx(file_name, file_buffer)
-#             print(response.status_code)
-#             print(response.text)
-#
-#         if response.status_code == 200:
-#             return {"id": id}
-#         else:
-#             return {"error": "Failed to send the file to the remote server."}
-#     except Exception as e:
-#         raise HTTPException(status_code=400, detail="File upload or send failed")
-
-
-# async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
-#     async with aiohttp.ClientSession() as session:
-#         data = {'file': (file_name, file_buffer, 'video/mp4')}
-#         async with session.post(external_server + "/receive/", data=data) as response:
-#             return response.status, await response.text()
-
-
 
 
 async def send_file_using_aiohttp(file_name: str, file_buffer) -> tuple:
@@ -244,11 +205,8 @@ async def send_mp4(file_name: str):
     global subprocess_completed
     try:
         # 로컬에서 파일 불러오기
-        # start_time = time.time()
-        # result = subprocess.run(command, capture_output=True, text=True)
-        # end_time = time.time()
-        # elapsed_time = end_time - start_time
-        # print(f"Elapsed time: {elapsed_time} seconds")
+
+        print(f"send mp4")
         while not subprocess_completed:
             await asyncio.sleep(1)
 

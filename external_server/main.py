@@ -8,11 +8,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import os
 import uuid
-from PIL import Image
 from models import Img, engine
 import json
 from apscheduler.schedulers.background import BackgroundScheduler
 from pytz import timezone
+import oci
 
 SessionLocal = sessionmaker(bind=engine)
 
@@ -23,7 +23,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5173"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -121,18 +121,6 @@ async def save_image_async(data: ImageData):
 
     return {"file_name": file_uuid}
 
-
-# @app.get("/img/{addr}")
-# def get_image_by_addr(addr: str):
-#     db_session = SessionLocal()
-#     #uuid를 db에 저장했기 때문에
-#     image_record = db_session.query(Img).filter(Img.addr == addr).first()
-#     db_session.close()
-#
-#     if not image_record:
-#         raise HTTPException(status_code=404, detail="Image not found")
-#     # 이미지 파일을 FileResponse로 반환
-#     return FileResponse(IMAGE_DIR+"/"+image_record.img+".JPG")
 
 
 @app.get("/download/{file_name}")
