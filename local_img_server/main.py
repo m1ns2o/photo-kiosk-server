@@ -10,9 +10,9 @@ import aiohttp
 from aiohttp import FormData
 import logging
 from fastapi.staticfiles import StaticFiles
-import oci
 from PIL import Image
 import cv2
+from typing import Optional
 import numpy as np
 import asyncio
 import time
@@ -100,6 +100,8 @@ async def run_on_startup():
         "-i", input_file,
         "-b:v", target_bitrate,
         "-c:a", "copy",  # Copy audio codec without re-encoding
+        # "-c:v", "h264_qsv",  # Use QSV H.264 hardware encoding
+        "-c:v", "h264",  # Use QSV H.264 hardware encoding
         # "-vf scale", "1280x720",
         output_file
     ]
@@ -113,14 +115,39 @@ def img_list(file_name: str):
 
 
 @app.get("/imgprocess/grayscale")
-def img_convert_grayscale():
-    global subprocess_completed
-
+def img_convert_grayscale(hvRatio: Optional[float] = 0.0):
+    print(hvRatio)
     for i in range(0, 8):
-        image = Image.open(dir + str(i) + '.JPG')
-        gray_image = image.convert("L")
+        
+        image_path = dir + str(i) + '.JPG'
+        image = Image.open(image_path)
+
+        if hvRatio:
+            image_width, image_height = image.size
+            rWidth = int((image_width - image_height * hvRatio) / 2)
+            left = rWidth
+            top = 0
+            right = image_width - rWidth
+            bottom = image_height
+            image = image.crop((left, top, right, bottom))
+            print("crop image"+str(i))
+            
+
+        flipped_image = image.transpose(Image.FLIP_LEFT_RIGHT)
+
+        # crop_image(0.6923, flipped_image, image_path)
+        
+
+        gray_image = flipped_image.convert("L")
+
+        flipped_image.save(image_path)
         gray_image_path = dir + str(i) + "_g.jpg"
         gray_image.save(gray_image_path)
+    return {"message": "success"}
+
+@app.get("/imgprocess/videoencoding")
+def img_convert_grayscale():
+    global subprocess_completed
     start_time = time.time()
     result = subprocess.run(command, capture_output=True, text=True)
     end_time = time.time()
@@ -205,13 +232,12 @@ async def send_mp4(file_name: str):
     global subprocess_completed
     try:
         # 로컬에서 파일 불러오기
-
-        print(f"send mp4")
         while not subprocess_completed:
             await asyncio.sleep(1)
 
         with open("output.mp4", "rb") as file_buffer:
             status_code, response_text = await send_file_using_aiohttp(file_name, file_buffer)
+            print(f"send mp4")
             delete_file("output.mp4")
 
         if status_code == 200:
@@ -232,6 +258,17 @@ def delete_file(path:str):
         print(f"File not found: {path}")
     except Exception as e:
         print(f"An error occurred: {e}")
+
+def crop_image(hvRatio, image, image_path):
+    image_width, image_height = image.size
+    rWidth = int((image_width - image_height * hvRatio) / 2)
+    left = rWidth
+    top = 0
+    right = image_width - rWidth
+    bottom = image_height
+    cropped_image = image.crop((left, top, right, bottom))
+    cropped_image.save(image_path)
+    print("cropped_image saved successfully.")
 # @app.get("/mp4/{file_name}")
 # async def send_mp4(file_name: str):
 #     try:
